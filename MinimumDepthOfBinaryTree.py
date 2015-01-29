@@ -8,12 +8,9 @@
 class Solution:
 
     def _min_depth_recursive(self, root):
-        if not root:
-            return 0
-        if not root.left:
-            return minDepth(root.right)+1
-        if not root.right:
-            return minDepth(root.left)+1
+        if not root: return 0
+        if not root.left: return minDepth(root.right)+1
+        if not root.right: return minDepth(root.left)+1
         return min(minDepth(root.left), minDepth(root.right))+1
 
     def _min_depth_bfs(self, root):
