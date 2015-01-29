@@ -7,7 +7,7 @@ class Solution:
         needed, found = [0]*256, [0]*256
         for c in T: needed[ord(c)] += 1
         
-        start, count, mw_start, mw_end = 0, 0, -1, m
+        start, count, min_window = 0, 0, ''
         for end, ec in enumerate(S):
             i = ord(ec)
             if needed[i] == 0:
@@ -26,8 +26,7 @@ class Solution:
                     found[j] -= 1
                 start += 1
             # update result
-            if end-start < mw_end-mw_start:
-                mw_start, mw_end = start, end
+            if not min_window or end-start+1 < len(min_window):
+                min_window = S[start:end+1]
 
-        if mw_start == -1: return ''
-        else: return S[mw_start:mw_end+1]
+        return min_window
