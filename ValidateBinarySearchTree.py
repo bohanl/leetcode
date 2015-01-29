@@ -5,18 +5,18 @@
 #         self.left = None
 #         self.right = None
 
+MAX_INT = 9223372036854775807
+MIN_INT = -9223372036854775808
+
+
 class Solution:
-    
-    def _is_valid_bst_recursive(self, root):
-        rval = root.val
 
-        left_valid, right_valid = True, True        
-        if root.left:
-            left_valid = root.left.val < rval and isValidBST(root.left)
-        if left_valid and root.right:
-            right_valid = root.right.val > rval and isValidBST(root.right)
-
-        return left_valid and right_valid
+    def _is_valid_bst_recursive(self, p, low, high):
+        if not p: return True
+        return p.val > low and \
+               p.val < high and \
+               self._is_valid_bst_recursive(p.left, low, p.val) and \
+               self._is_valid_bst_recursive(p.right, p.val, high)
 
     def _is_valid_bst_stack(self, root):
         last, curr, stack = None, root, []
@@ -36,7 +36,4 @@ class Solution:
     # @param root, a tree node
     # @return a boolean
     def isValidBST(self, root):
-        if not root:
-            return True
-        
-        return self._is_valid_bst_stack(root)
+        return self._is_valid_bst_recursive(root, MIN_INT, MAX_INT)
