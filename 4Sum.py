@@ -5,31 +5,24 @@ class Solution:
 
         num = sorted(num)
 
-        i1, n = 0, len(num)
+        n = len(num)
 
-        while i1 < n-3:
-            a = num[i1]
+        for i1 in xrange(n-3):
+            if i1 > 0 and num[i1] == num[i1-1]: continue
             i2 = i1 + 1
-            while i2 < n-2:
-                b = num[i2]
+            for i2 in xrange(i1+1, n-2):
+                if i2 > i+1 and num[i2] == num[i2-1]: continue
                 i3, i4 = i2+1, n-1
                 while i3 < i4:
-                    c, d = num[i3], num[i4]
-                    s = a + b + c + d
+                    s = num[i1]+num[i2]+num[i3]+num[i4]
                     if s == target:
-                        res.append([a, b, c, d])
+                        res.append([num[i1],num[i2],num[i3],num[i4]])
+                        while i3 < i4 and num[i3+1] == num[i3]: i3 += 1
+                        while i3 < i4 and num[i4-1] == num[i4]: i4 -= 1
                         i3, i4 = i3+1, i4-1
-                        while i3 < i4 and num[i3] == c: i3 += 1
-                        while i3 < i4 and num[i4] == d: i4 -= 1
                     elif s > target:
                         i4 -= 1
                     else:
                         i3 += 1
-
-                i2 += 1
-                while i2 < n-2 and num[i2] == b: i2 += 1
-
-            i1 += 1
-            while i1 < n-3 and num[i1] == a: i1 += 1
 
         return res
