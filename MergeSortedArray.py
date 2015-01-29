@@ -9,11 +9,9 @@ class Solution:
         
         while i >= 0 and j >= 0:
             if A[i] > B[j]:
-                A[k] = A[i]
-                i -= 1
+                A[k], i = A[i], i-1
             else:
-                A[k] = B[j]
-                j -= 1
+                A[k], j = B[j], j-1
             k -= 1
 
         if j >= 0:

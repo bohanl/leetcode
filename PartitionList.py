@@ -11,16 +11,14 @@ class Solution:
     def partition(self, head, x):
         left, right = ListNode(0), ListNode(0)
         pl, pr = left, right
+
         while head:
             if head.val < x:
-                pl.next = head
-                pl = pl.next
+                pl, pl.next = pl.next, head
             else:
-                pr.next = head
-                pr = pr.next
+                pr, pr.next = pr.next, head
             head = head.next
 
-        pl.next = right.next
-        pr.next = None
+        pl.next, pr.next = right.next, None
 
         return left.next

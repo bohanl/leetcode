@@ -22,15 +22,18 @@ class Solution:
         
         p1, p2 = head, head
         
-        while not found and p1 and p2 and p2.next:
+        while p1 and p2 and p2.next:
             p1, p2 = p1.next, p2.next.next
-            if p1 is p2: found = True
+            if p1 is p2:
+                found = True
+                break
 
         if not found:
             return None
 
         p1 = head
-        while p1 is not p2: p1, p2 = p1.next, p2.next
+        while p1 is not p2:
+            p1, p2 = p1.next, p2.next
         
         return p1
 
