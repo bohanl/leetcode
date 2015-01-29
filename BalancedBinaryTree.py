@@ -8,15 +8,14 @@
 class Solution:
 
     def maxDepth(self, root):
-        if not root:
-            return 0
-        return 1+max(self.maxDepth(root.left), self.maxDepth(root.right))
+        if not root: return 0
+        L = self.maxDepth(root.left)
+        if L == -1: return -1
+        R = self.maxDepth(root.right)
+        if R == -1: return -1
+        return max(L, R)+1 if abs(L-R)<=1 else -1
 
     # @param root, a tree node
     # @return a boolean
     def isBalanced(self, root):
-        if not root:
-            return True
-        return abs(self.maxDepth(root.left)-self.maxDepth(root.right))<=1 and \
-               self.isBalanced(root.left) and \
-               self.isBalanced(root.right)
+        return self.maxDepth(root) != -1
