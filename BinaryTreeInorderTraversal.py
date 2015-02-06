@@ -9,10 +9,9 @@ class Solution:
     # @param root, a tree node
     # @return a list of integers
     def inorderTraversal(self, root):
-        curr, stack = root, []
+        curr, res, stack = root, [], []
 
-        res = []
-        while curr or len(stack) != 0:
+        while curr or stack:
             if curr:
                 stack.append(curr)
                 curr = curr.left
