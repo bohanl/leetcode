@@ -2,10 +2,9 @@ class Solution:
     # @param strs, a list of strings
     # @return a list of strings
     def anagrams(self, strs):
-        res = []
-        if not strs: return res
+        if not strs: return []
 
-        d = {}
+        res, d = [], {}
         for i, s in enumerate(strs):
             ss = ''.join(sorted(s))
             d.get(ss, []).append(i)
