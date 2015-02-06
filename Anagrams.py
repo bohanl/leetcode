@@ -8,13 +8,10 @@ class Solution:
         d = {}
         for i, s in enumerate(strs):
             ss = ''.join(sorted(s))
-            if d.has_key(ss):
-                d[ss].append(i)
-            else:
-                d[ss] = [i]
-        
+            d.get(ss, []).append(i)
+
         for k, v in d.items():
             if len(v) > 1:
                 res.extend([strs[i] for i in v])
-        
+
         return res
