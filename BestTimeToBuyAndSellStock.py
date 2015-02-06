@@ -5,9 +5,9 @@ class Solution:
         if not prices:
             return 0
 
-        minval, maxp = prices[0], 0
+        min_val, max_profit = prices[0], 0
         for i in xrange(1, len(prices)):
-            minval = min(minval, prices[i])
-            maxp = max(maxp, prices[i]-minval)
+            min_val = min(min_val, prices[i])
+            max_profit = max(max_profit, prices[i]-min_val)
 
-        return maxp
+        return max_profit
