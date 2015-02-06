@@ -9,7 +9,7 @@ class Solution:
     # @param root, a tree node
     # @return a list of integers
     def inorderTraversal(self, root):
-        curr, res, stack = root, [], []
+        curr, stack, res = root, [], []
 
         while curr or stack:
             if curr:
