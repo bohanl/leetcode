@@ -4,13 +4,11 @@ class Solution:
         if not strs or not strs[0]:
             return ''
 
-        c = strs[0][0]
-
         for s in strs:
-            if not s or s[0] != c:
+            if not s or s[0] != strs[0][0]:
                 return ''
 
-        return c + self.longestCommonPrefix([s[1:] for s in strs])
+        return strs[0][0] + self.longestCommonPrefix([s[1:] for s in strs])
 
     def _lcp(self, strs):
         if not strs:
