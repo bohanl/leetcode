@@ -3,7 +3,7 @@ class Solution:
     # @return an integer
     def trap(self, A):
         n = len(A)
-        
+
         left, right = [0]*n, [0]*n
         for i, j in zip(xrange(n), xrange(n-1,-1,-1)):
             left[i] = max(left[i-1], A[i]) if i > 0 else A[i]
@@ -13,5 +13,5 @@ class Solution:
         for i in xrange(1,n-1):
             low_bar = min(left[i-1], right[i+1])
             water += max(0, low_bar-A[i])*1
-        
+
         return water
