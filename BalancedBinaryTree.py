@@ -6,7 +6,6 @@
 #         self.right = None
 
 class Solution:
-
     def maxDepth(self, root):
         if not root:
             return 0
