@@ -1,4 +1,4 @@
-c class Solution {
+public class Solution {
     private int compressStr(String s) {
         int x = 0;
         for (char c : s.toCharArray()) {
