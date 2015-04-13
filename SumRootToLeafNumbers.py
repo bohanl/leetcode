@@ -7,11 +7,10 @@
 
 class Solution:
     def backtrack(self, node, a, arr):
-        if not node:
-            return
         a = a*10 + node.val
         if not node.left and not node.right:
             arr.append(a)
+            return
         if node.left:
             self.backtrack(node.left, a, arr)
         if node.right:
@@ -21,5 +20,6 @@ class Solution:
     # @return an integer
     def sumNumbers(self, root):
         a, arr = 0, []
-        self.backtrack(root, a, arr)
+        if root:
+            self.backtrack(root, a, arr)
         return sum(arr)
